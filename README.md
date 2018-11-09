@@ -1,2 +1,2 @@
 # NoEmuRL
-No emulator is need to do RL on classic games!
+No emulator is needed for RL on classic games!
