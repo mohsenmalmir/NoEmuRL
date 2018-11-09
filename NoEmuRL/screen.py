@@ -7,6 +7,7 @@
 from mss import mss
 from PIL import Image
 import numpy as np
+import cv2
 
 mss_obj = mss()
 
@@ -36,9 +37,11 @@ def grab(monitor=0, bbox=None):
     # grab the screen shot
     mss_im = mss_obj.grab(mss_obj.monitors[monitor])
     # convert the PIL image
-    pil_img = Image.frombytes("RGB",mss_im.size,mss_im.rgb).convert("BGR")
+    pil_img = Image.frombytes("RGB",mss_im.size,mss_im.rgb)
     # convert to numpy array
     np_img = np.array(pil_img)
+    # image is RGB, convert it to BGR
+    np_img = cv2.cvtColor(np_img, cv2.COLOR_RGB2BGR)
     if bbox is not None:
         x1,y1,x2,y2 = bbox
         x1,y1 = max(0,x1), max(0,y1)
