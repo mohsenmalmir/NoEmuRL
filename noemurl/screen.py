@@ -19,6 +19,8 @@ def grab(monitor=0, bbox=None):
     Args:
         monitor: (int) index of the monitor to use
         bbox: List[int] x1y1x2y2 coordinates to be retrieved from the screenshot.
+    Returns:
+        numpy array, the captured screenshot is returned
     """
     # check for valid monitor id
     if monitor >= len(mss_obj.monitors):
